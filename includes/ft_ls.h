@@ -6,27 +6,28 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:31:17 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/02 17:43:01 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/02 19:21:20 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_LS_H
 # define FT_LS_H
 
-struct ft_ls
+struct		s_ls
 {
 	int		flags;
 };
-typedef struct ft_ls t_ls;
+typedef struct s_ls		t_ls;
 
 /*
-*	Flags
+** Flags
 */
-# define FLAG_l = 0x1
-# define FLAG_R = 0x2
-# define FLAG_a = 0x4
-# define FLAG_r = 0x8
-# define FLAG_t = 0x10
+
+# define FLAG_L = 0x1
+# define FLAG_RR = 0x2
+# define FLAG_A = 0x4
+# define FLAG_R = 0x8
+# define FLAG_T = 0x10
 
 
 #endif
