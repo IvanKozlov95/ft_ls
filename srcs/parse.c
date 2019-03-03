@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:35:22 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/02 20:24:56 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/02 21:35:11 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ t_bool	parse_flag(char *arg, t_ls *ls)
 		if (flag_val > 0)
 			ls->flags |= flag_val;
 		else
+		{
+			ft_printf("ft_ls: illegal option -- %c\n", arg[i]);
 			return (FALSE);
-		// todo: error in else
+		}
 	}
 	return (TRUE);
 }
@@ -43,9 +45,10 @@ static void	parse_flags(int ac, const char *av[], t_ls *ls)
 	{
 		arg = av[i];
 		if (parse_flag(arg, ls) == FALSE)
-			ft_printf("Error with flags\n");
-		else
-			ft_printf("awesome\n");
+		{
+			ft_ls_usage();
+			exit(1);
+		}
 		ft_printf("flags val %d\n", ls->flags);
 	}
 }

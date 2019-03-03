@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 16:34:18 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/02 20:14:22 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/02 21:27:14 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "ft_ls.h"
 #include "ft_printf.h"
 
-void	usage(void)
+void	ft_ls_usage(void)
 {
 	ft_printf("usage: ft_ls [-alRrt] [file ...]\n");
 }
@@ -30,7 +30,7 @@ int		main(int ac, const char *av[])
 
 	if (ac < 2)
 	{
-		usage();
+		ft_ls_usage();
 	}
 	ls = ls_init();
 	parse(ac - 1, av + 1, ls);

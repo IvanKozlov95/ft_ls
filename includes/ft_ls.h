@@ -6,14 +6,14 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:31:17 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/02 20:07:57 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/02 21:36:35 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_LS_H
 # define FT_LS_H
 
-struct		s_ls
+struct					s_ls
 {
 	int		flags;
 };
@@ -36,5 +36,7 @@ t_ls	*ls_init(void);
 int		get_flag_value(char f);
 
 int		parse(int ac, const char *av[], t_ls *ls);
+
+void	ft_ls_usage(void);
 
 #endif
