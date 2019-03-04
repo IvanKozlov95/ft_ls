@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:31:17 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/04 03:05:27 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/04 03:18:54 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,10 @@ typedef struct s_arg	t_arg;
 
 # define SUPPORTED_FLAGS "alrRt"
 
-t_ls	*ls_init(void);
-int		get_flag_value(char f);
+t_ls			*ls_init(void);
+t_arg			*arg_init(char *path);
+void			arg_destroy(t_arg *arg);
+int				get_flag_value(char f);
 
 int				parse(int ac, const char *av[], t_ls *ls);
 
