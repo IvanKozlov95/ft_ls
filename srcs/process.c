@@ -1,40 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   process.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/02 16:34:18 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/04 03:04:46 by ikozlov          ###   ########.fr       */
+/*   Created: 2019/03/04 02:27:50 by ikozlov           #+#    #+#             */
+/*   Updated: 2019/03/04 03:05:20 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
 #include "ft_ls.h"
-#include "ft_printf.h"
 
-void	ft_ls_usage(void)
+void		get_arg_info(t_list *node)
 {
-	ft_printf("usage: ft_ls [-alRrt] [file ...]\n");
+	struct stat		f;
+	t_arg			*arg;
+
+	arg = (t_arg *)node->content;
+	if (!lstat(arg->path, &f))
+	{
+		arg->stat = f;
+	}
+	else
+		arg->not_found = 1;
+	node->content = arg;
 }
 
-/*
-** ft_ls -Rasd a1 a2 a3 ... aN
-*/
-
-int		main(int ac, const char *av[])
+void		ls_process(t_ls *ls)
 {
-	t_ls	*ls;
-
-	if (ac < 2)
-	{
-		ft_ls_usage();
-	}
-	ls = ls_init();
-	parse(ac - 1, av + 1, ls);
-	ls_process(ls);
-	print_ls(ls);
-	return (0);
+	ft_lstiter(ls->args, &get_arg_info);
 }

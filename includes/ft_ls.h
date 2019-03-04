@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:31:17 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/04 02:00:43 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/04 03:05:27 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,23 @@
 # define FT_LS_H
 
 # include "list.h"
+# include <sys/stat.h>
 
 struct					s_ls
 {
-	int		flags;
-	t_list	*args;
+	int				flags;
+	t_list			*args;
 };
 typedef struct s_ls		t_ls;
+
+struct					s_arg
+{
+	char			*path;
+	struct stat		stat;
+
+	unsigned char	not_found;
+};
+typedef struct s_arg	t_arg;
 
 /*
 ** Flags
@@ -38,6 +48,8 @@ t_ls	*ls_init(void);
 int		get_flag_value(char f);
 
 int				parse(int ac, const char *av[], t_ls *ls);
+
+void			ls_process(t_ls *ls);
 
 void			ft_ls_usage(void);
 void			print_ls(t_ls *ls);

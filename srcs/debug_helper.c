@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 01:54:09 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/04 02:14:52 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/04 03:01:52 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,12 @@
 
 static void		print_as_sring(t_list *ptr)
 {
-	ft_printf("%s\n", (char *)ptr->content);
+	t_arg	*tmp;
+
+	tmp = (t_arg *)ptr->content;
+	ft_printf("Arg: %s is found? - %d\n", tmp->path, !tmp->not_found);
+	ft_printf("Is file %d, is directory: %d\n",
+		S_ISREG(tmp->stat.st_mode), S_ISDIR(tmp->stat.st_mode));
 }
 
 void			print_ls(t_ls *ls)
