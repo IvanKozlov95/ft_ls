@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:35:22 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/02 21:35:11 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/04 02:25:52 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	parse_args(int ac, const char *av[], t_ls *ls)
 	t_list		*args;
 	t_list		*new_node;
 
-	i =  -1;
+	i = -1;
 	args = NULL;
 	while (av && av[++i])
 	{
