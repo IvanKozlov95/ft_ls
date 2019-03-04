@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:35:22 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/04 02:25:52 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/04 03:17:38 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "ft_ls.h"
 #include "strings.h"
 #include "ft_printf.h"
+
+#include <stdlib.h>
 
 t_bool	parse_flag(char *arg, t_ls *ls)
 {
@@ -57,20 +59,25 @@ static int	parse_flags(int ac, const char *av[], t_ls *ls)
 void	parse_args(int ac, const char *av[], t_ls *ls)
 {
 	int			i;
-	t_list		*args;
+	t_arg		*new_arg;
 	t_list		*new_node;
 
 	i = -1;
-	args = NULL;
+	ls->args = NULL;
 	while (av && av[++i])
 	{
-		new_node = ft_lstnew(av[i], ft_strlen(av[i]));
-		args == NULL ? args = new_node : ft_lstaddback(&args, new_node);
-		ac++;
+		new_arg = arg_init(av[i]);
+		new_node = ft_lstnew(new_arg, sizeof(t_arg));
+		ls->args == NULL ? ls->args = new_node
+			: ft_lstaddback(&ls->args, new_node);
+		arg_destroy(new_arg);
 	}
-	if (args == NULL)
-		args = ft_lstnew(".", 2);
-	ls->args = args;
+	if (ls->args == NULL)
+	{
+		new_arg = arg_init(".");
+		ls->args = ft_lstnew(new_arg, sizeof(t_arg));
+		arg_destroy(new_arg);
+	}
 }
 
 int		parse(int ac, const char *av[], t_ls *ls)
@@ -79,6 +86,5 @@ int		parse(int ac, const char *av[], t_ls *ls)
 
 	i = parse_flags(ac, av, ls);
 	parse_args(ac, av + i, ls);
-	print_ls(ls);
 	return (0);
 }

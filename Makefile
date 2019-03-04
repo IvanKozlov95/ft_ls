@@ -6,7 +6,7 @@
 #    By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/02 16:43:23 by ikozlov           #+#    #+#              #
-#    Updated: 2019/03/04 03:03:36 by ikozlov          ###   ########.fr        #
+#    Updated: 2019/03/04 03:09:22 by ikozlov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ else ifeq ($(ENV), PROD)
 endif
 
 # files
-SRC_FILES = main.c ls.c parse.c process.c debug_helper.c
+SRC_FILES = main.c ls.c parse.c process.c arg.c debug_helper.c
 OBJ_FILES = $(SRC_FILES:.c=.o)
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ = $(addprefix $(OBJ_DIR), $(OBJ_FILES))
