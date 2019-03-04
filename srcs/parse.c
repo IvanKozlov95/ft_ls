@@ -35,7 +35,7 @@ t_bool	parse_flag(char *arg, t_ls *ls)
 	return (TRUE);
 }
 
-static void	parse_flags(int ac, const char *av[], t_ls *ls)
+static int	parse_flags(int ac, const char *av[], t_ls *ls)
 {
 	int		i;
 	char	*arg;
@@ -51,14 +51,34 @@ static void	parse_flags(int ac, const char *av[], t_ls *ls)
 		}
 		ft_printf("flags val %d\n", ls->flags);
 	}
+	return (i);
 }
 
 void	parse_args(int ac, const char *av[], t_ls *ls)
 {
+	int			i;
+	t_list		*args;
+	t_list		*new_node;
+
+	i =  -1;
+	args = NULL;
+	while (av && av[++i])
+	{
+		new_node = ft_lstnew(av[i], ft_strlen(av[i]));
+		args == NULL ? args = new_node : ft_lstaddback(&args, new_node);
+		ac++;
+	}
+	if (args == NULL)
+		args = ft_lstnew(".", 2);
+	ls->args = args;
 }
 
 int		parse(int ac, const char *av[], t_ls *ls)
 {
-	parse_flags(ac, av, ls);
+	int		i;
+
+	i = parse_flags(ac, av, ls);
+	parse_args(ac, av + i, ls);
+	print_ls(ls);
 	return (0);
 }

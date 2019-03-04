@@ -13,9 +13,12 @@
 #ifndef FT_LS_H
 # define FT_LS_H
 
+# include "list.h"
+
 struct					s_ls
 {
 	int		flags;
+	t_list	*args;
 };
 typedef struct s_ls		t_ls;
 
