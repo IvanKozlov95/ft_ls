@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 18:37:10 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/05 03:32:07 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/05 05:07:59 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void		display_dirs(t_list *node)
 	t_arg	*arg;
 
 	arg = (t_arg *)node->content;
-	if (!arg->not_found && S_ISDIR(arg->stat.st_mode))
+	if (!arg->not_found && S_ISDIR(arg->stat.st_mode)
+		&& (get_set_flag(0, FLAG_RR) || arg->top_level))
 		display_dir(arg);
 }
 
@@ -64,7 +65,7 @@ void		process_dirs(t_list *args)
 	// ft_printf("process_dirs start\n");
 	ft_lstiter(args, &get_arg_info);
 	ft_lstiter(args, &display_files);
-	ft_printf("\n");
+	ft_printf("\n\n");
 	ft_lstiter(args, &display_dirs);
 	// ft_printf("process_dirs end\n");
 }

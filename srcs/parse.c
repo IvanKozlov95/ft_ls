@@ -70,6 +70,7 @@ void	parse_args(int ac, const char *av[], t_ls *ls)
 	while (av && av[++i])
 	{
 		new_arg = arg_init(av[i], NULL);
+		new_arg->top_level = 1;
 		new_node = ft_lstnew(new_arg, sizeof(t_arg));
 		ls->args == NULL ? ls->args = new_node
 			: ft_lstaddback(&ls->args, new_node);
@@ -78,6 +79,7 @@ void	parse_args(int ac, const char *av[], t_ls *ls)
 	if (ls->args == NULL)
 	{
 		new_arg = arg_init(".", NULL);
+		new_arg->top_level = 1;
 		ls->args = ft_lstnew(new_arg, sizeof(t_arg));
 		free(new_arg);
 	}

@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:31:17 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/05 04:29:41 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/05 05:01:00 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ struct					s_arg
 	char			*path;
 	char			*name;
 	char			is_hidden;
+	char			top_level;
 	unsigned char	not_found;
 
 	struct stat		stat;

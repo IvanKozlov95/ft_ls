@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 03:07:17 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/05 03:32:07 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/05 05:01:05 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_arg	*arg_init(const char *name, char *dir)
 	res->is_hidden = name[0] == '.' ? 1 : 0;
 	res->name = ft_strdup(name);
 	res->path = dir ? build_path(dir, (char *)name) : ft_strdup(name);
+	res->top_level = 0;
 	return (res);
 }
 
@@ -58,6 +59,7 @@ t_list	*build_arg_list(char *av[])
 	while (av && av[++i])
 	{
 		new_node = convert_name_to_arg(av[i], NULL);
+		((t_arg *)new_node->content)->top_level = 1;
 		res == NULL ? res = new_node
 			: ft_lstaddback(&res, new_node);
 	}
