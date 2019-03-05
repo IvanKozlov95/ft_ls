@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 02:27:50 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/04 03:05:20 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/05 02:22:35 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ void		get_arg_info(t_list *node)
 
 void		ls_process(t_ls *ls)
 {
-	ft_lstiter(ls->args, &get_arg_info);
+	ft_lstiter(ls->args, &process_dirs);
 }
