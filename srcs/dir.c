@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 18:37:10 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/04 20:43:20 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/05 02:21:38 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ t_list	*get_dir_content(t_dir dir)
 		if (file->d_name[0] != '.')
 		{
 			new_arg = arg_init(file->d_name);
-			ft_printf("%s\n", file->d_name);
 			new_arg->path = build_path(dir.path, new_arg->name);
 			new_node = ft_lstnew(new_arg, sizeof(t_arg));
 			res == NULL ? res = new_node : ft_lstaddback(&res, new_node);
@@ -69,11 +68,8 @@ void		display_dirs(t_list *node)
 
 void		process_dirs(t_list *args)
 {
-	// ft_printf("Processing dirs\n");
 	ft_lstiter(args, &get_arg_info);
-	// ft_printf("Got arg info\n");
 	ft_lstiter(args, &display_files);
-	// ft_printf("Diplayed files\n");
+	ft_printf("\n");
 	ft_lstiter(args, &display_dirs);
-	// ft_printf("Reccuring into subdris\n");
 }
