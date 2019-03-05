@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:31:17 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/04 20:40:56 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/05 02:46:43 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ typedef struct s_arg	t_arg;
 # define PARENT_DIR ".."
 
 t_ls			*ls_init(void);
-t_arg			*arg_init(const char *name);
 void			arg_destroy(t_arg *arg);
 int				get_flag_value(char f);
 
@@ -82,5 +81,9 @@ void			process_dirs(t_list *args);
 void			display_files(t_list *node);
 
 char			*build_path(char *dir, char *file_name);
+
+t_list			*build_arg_list(char *av[]);
+t_arg			*arg_init(const char *name, char *dir);
+t_list			*convert_name_to_arg(char *name, char *dir);
 
 #endif
