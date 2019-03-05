@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:35:22 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/05 03:34:06 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/05 05:14:40 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int		parse(int ac, const char *av[], t_ls *ls)
 	int		i;
 
 	i = parse_flags(ac, av, ls);
-	sort_char_ptr(av + i, ac + i, &ft_strcmp);
-	ls->args = build_arg_list((char **)av);
+	sort_char_ptr(av + i, ac - i, &ft_strcmp);
+	ls->args = build_arg_list((char **)av + i);
 	return (0);
 }
