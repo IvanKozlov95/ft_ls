@@ -54,3 +54,4 @@ dkms.conf
 .nfs*
 ._*
 .vscode
+test/
