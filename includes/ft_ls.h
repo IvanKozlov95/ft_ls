@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:31:17 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/05 02:46:43 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/05 03:26:46 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,8 @@ char			*build_path(char *dir, char *file_name);
 t_list			*build_arg_list(char *av[]);
 t_arg			*arg_init(const char *name, char *dir);
 t_list			*convert_name_to_arg(char *name, char *dir);
+
+void			sort_char_ptr(const char *arr[], int len,
+	int (*cmp)(const char *, const char *));
 
 #endif
