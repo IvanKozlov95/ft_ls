@@ -27,7 +27,10 @@ t_bool	parse_flag(const char *arg, t_ls *ls)
 	{
 		flag_val = get_flag_value(arg[i]);
 		if (flag_val > 0)
+		{
 			ls->flags |= flag_val;
+			get_set_flag(flag_val, 0);
+		}
 		else
 		{
 			ft_printf("ft_ls: illegal option -- %c\n", arg[i]);
