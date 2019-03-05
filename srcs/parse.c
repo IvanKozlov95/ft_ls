@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:35:22 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/05 02:38:27 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/05 03:07:40 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,7 @@ void	parse_args(int ac, const char *av[], t_ls *ls)
 	ls->args = NULL;
 	while (av && av[++i])
 	{
-		new_arg = arg_init(av[i]);
-		new_arg->path = ft_strdup(new_arg->name);
+		new_arg = arg_init(av[i], NULL);
 		new_node = ft_lstnew(new_arg, sizeof(t_arg));
 		ls->args == NULL ? ls->args = new_node
 			: ft_lstaddback(&ls->args, new_node);
@@ -75,7 +74,7 @@ void	parse_args(int ac, const char *av[], t_ls *ls)
 	}
 	if (ls->args == NULL)
 	{
-		new_arg = arg_init(".");
+		new_arg = arg_init(".", NULL);
 		ls->args = ft_lstnew(new_arg, sizeof(t_arg));
 		free(new_arg);
 	}
@@ -86,7 +85,6 @@ int		parse(int ac, const char *av[], t_ls *ls)
 	int		i;
 
 	i = parse_flags(ac, av, ls);
-	// parse_args(ac, av + i, ls);
 	ls->args = build_arg_list((char **)av);
 	return (0);
 }
