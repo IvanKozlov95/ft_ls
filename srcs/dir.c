@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 18:37:10 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/05 05:07:59 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/07 15:39:05 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,14 @@ void		display_dirs(t_list *node)
 
 void		process_dirs(t_list *args)
 {
-	// ft_printf("process_dirs start\n");
+	static int		first = 1;
+
 	ft_lstiter(args, &get_arg_info);
 	ft_lstsort(args, &lexcmp);
 	ft_lstiter(args, &display_files);
-	ft_printf("\n\n");
+	if (!first)
+		ft_printf("\n\n");
+	first = 0;
 	ft_lstiter(args, &display_dirs);
-	// ft_printf("process_dirs end\n");
+	ft_lstdel(&args, &ft_free_content);
 }
