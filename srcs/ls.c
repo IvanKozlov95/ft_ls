@@ -6,11 +6,12 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 19:32:33 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/02 20:27:24 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/07 15:35:16 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+#include "ftstring.h"
 
 t_ls	*ls_init(void)
 {
