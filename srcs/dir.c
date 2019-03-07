@@ -64,6 +64,7 @@ void		process_dirs(t_list *args)
 {
 	// ft_printf("process_dirs start\n");
 	ft_lstiter(args, &get_arg_info);
+	ft_lstsort(args, &lexcmp);
 	ft_lstiter(args, &display_files);
 	ft_printf("\n\n");
 	ft_lstiter(args, &display_dirs);
