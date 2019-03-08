@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 18:41:39 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/07 18:41:22 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/07 18:50:23 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void		display_files(t_list *node)
 	arg = (t_arg *)node->content;
 	if (arg->not_found)
 		ft_printf("ft_ls: %s: No such file or directory\n", arg->path);
-	else if (!arg->is_hidden
-		&& (S_ISREG(arg->stat.st_mode) || !arg->top_level))
+	else if ((arg->is_hidden && get_set_flag(0, FLAG_A) && !arg->top_level)
+		|| (!arg->is_hidden && (S_ISREG(arg->stat.st_mode) || !arg->top_level)))
 		display_file(arg);
 }

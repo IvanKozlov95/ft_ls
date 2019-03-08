@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 18:37:10 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/07 16:08:07 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/07 18:50:11 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,8 @@ t_list			*get_dir_content(t_dir dir)
 	res = NULL;
 	while ((file = readdir(dir.dir)))
 	{
-		if (file->d_name[0] != '.')
-		{
-			new_node = convert_name_to_arg(file->d_name, dir.path, 0);
-			res == NULL ? res = new_node : ft_lstaddback(&res, new_node);
-		}
+		new_node = convert_name_to_arg(file->d_name, dir.path, 0);
+		LST_ADDCREATE(res, new_node);
 	}
 	return (res);
 }

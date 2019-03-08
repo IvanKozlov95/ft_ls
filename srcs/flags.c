@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 04:26:39 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/07 16:06:48 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/07 18:46:05 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ int		get_flag_value(char f)
 	int					pos;
 
 	pos = ft_strchri(SUPPORTED_FLAGS, f);
-	return (pos > 0 ? flags_values[pos] : -1);
+	return (pos >= 0 ? flags_values[pos] : -1);
 }
