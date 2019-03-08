@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:31:17 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/07 18:40:40 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/07 19:08:34 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "list.h"
 # include "ft_printf.h"
 
+# include <time.h>
 # include <stdlib.h>
 # include <dirent.h>
 # include <sys/stat.h>
@@ -84,6 +85,7 @@ void					display_files(t_list *node);
 char					*build_path(char *dir, char *file_name);
 
 int						lexcmp(t_list *a, t_list *b);
+int						timecmp(t_list *a, t_list *b);
 void					sort_char_ptr(const char *arr[], int len,
 	int (*cmp)(const char *, const char *));
 

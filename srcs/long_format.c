@@ -6,13 +6,12 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 16:39:49 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/07 18:39:51 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/07 19:02:17 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pwd.h>
 #include <grp.h>
-#include <time.h>
 
 #include "ft_ls.h"
 
