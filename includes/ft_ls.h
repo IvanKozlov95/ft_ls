@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:31:17 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/07 16:09:37 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/07 18:40:40 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,11 @@ void					sort_char_ptr(const char *arr[], int len,
 
 int						get_flag_value(char f);
 int						get_set_flag(int set, int get);
+
+char					*get_time(struct stat st);
+char					*get_group(struct stat st);
+char					*get_owner(struct stat st);
+char					get_file_mode(unsigned short st_mode);
+void					get_permissions(unsigned short st_mode, char *perm);
 
 #endif
