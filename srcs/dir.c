@@ -6,14 +6,14 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 18:37:10 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/07 15:39:05 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/07 16:08:07 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 #include "ftstring.h"
 
-t_list	*get_dir_content(t_dir dir)
+t_list			*get_dir_content(t_dir dir)
 {
 	t_list				*res;
 	t_list				*new_node;
@@ -24,7 +24,7 @@ t_list	*get_dir_content(t_dir dir)
 	{
 		if (file->d_name[0] != '.')
 		{
-			new_node = convert_name_to_arg(file->d_name, dir.path);
+			new_node = convert_name_to_arg(file->d_name, dir.path, 0);
 			res == NULL ? res = new_node : ft_lstaddback(&res, new_node);
 		}
 	}
@@ -50,7 +50,7 @@ static void		display_dir(t_arg *arg)
 		process_dirs(dir_content);
 }
 
-void		display_dirs(t_list *node)
+void			display_dirs(t_list *node)
 {
 	t_arg	*arg;
 
@@ -60,15 +60,14 @@ void		display_dirs(t_list *node)
 		display_dir(arg);
 }
 
-void		process_dirs(t_list *args)
+void			process_dirs(t_list *args)
 {
 	static int		first = 1;
 
 	ft_lstiter(args, &get_arg_info);
 	ft_lstsort(args, &lexcmp);
 	ft_lstiter(args, &display_files);
-	if (!first)
-		ft_printf("\n\n");
+	ft_printf("%s", first ? "\n" : "\n\n");
 	first = 0;
 	ft_lstiter(args, &display_dirs);
 	ft_lstdel(&args, &ft_free_content);

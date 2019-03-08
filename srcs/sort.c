@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 03:08:38 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/05 03:33:48 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/07 16:08:36 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,3 @@ void			sort_char_ptr(char *arr[], int len,
 {
 	quick_sort(arr, 0, len - 1, cmp);
 }
-

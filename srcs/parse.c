@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:35:22 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/05 05:14:40 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/07 16:08:23 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 #include <stdlib.h>
 
-t_bool	parse_flag(const char *arg, t_ls *ls)
+t_bool		parse_flag(const char *arg, t_ls *ls)
 {
 	int		i;
 	int		flag_val;
@@ -27,10 +27,7 @@ t_bool	parse_flag(const char *arg, t_ls *ls)
 	{
 		flag_val = get_flag_value(arg[i]);
 		if (flag_val > 0)
-		{
-			ls->flags |= flag_val;
 			get_set_flag(flag_val, 0);
-		}
 		else
 		{
 			ft_printf("ft_ls: illegal option -- %c\n", arg[i]);
@@ -54,38 +51,11 @@ static int	parse_flags(int ac, const char *av[], t_ls *ls)
 			ft_ls_usage();
 			exit(1);
 		}
-		ft_printf("flags val %d\n", ls->flags);
 	}
 	return (i);
 }
 
-void	parse_args(int ac, const char *av[], t_ls *ls)
-{
-	int			i;
-	t_arg		*new_arg;
-	t_list		*new_node;
-
-	i = -1;
-	ls->args = NULL;
-	while (av && av[++i])
-	{
-		new_arg = arg_init(av[i], NULL);
-		new_arg->top_level = 1;
-		new_node = ft_lstnew(new_arg, sizeof(t_arg));
-		ls->args == NULL ? ls->args = new_node
-			: ft_lstaddback(&ls->args, new_node);
-		free(new_arg);
-	}
-	if (ls->args == NULL)
-	{
-		new_arg = arg_init(".", NULL);
-		new_arg->top_level = 1;
-		ls->args = ft_lstnew(new_arg, sizeof(t_arg));
-		free(new_arg);
-	}
-}
-
-int		parse(int ac, const char *av[], t_ls *ls)
+int			parse(int ac, const char *av[], t_ls *ls)
 {
 	int		i;
 

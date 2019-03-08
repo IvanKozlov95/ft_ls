@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 01:54:09 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/04 03:01:52 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/07 16:00:28 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static void		print_as_sring(t_list *ptr)
 void			print_ls(t_ls *ls)
 {
 	ft_printf("BEHOLD THE LS STRUCTURE\n");
-	ft_printf("flags: %d\n", ls->flags);
 	ft_printf("Args:\n");
 	ft_lstiter(ls->args, &print_as_sring);
 }

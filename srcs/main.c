@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 16:34:18 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/04 16:09:08 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/07 15:59:44 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int		main(int ac, const char *av[])
 
 	ls = ls_init();
 	parse(ac - 1, av + 1, ls);
-	ls_process(ls);
-	print_ls(ls);
+	process_dirs(ls->args);
 	return (0);
 }

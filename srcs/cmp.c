@@ -6,12 +6,13 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/07 15:37:09 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/07 15:38:13 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/07 15:55:43 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_ls.h"
 #include "list.h"
+#include "ft_ls.h"
+#include "ftstring.h"
 
 int		lexcmp(t_list *a, t_list *b)
 {
