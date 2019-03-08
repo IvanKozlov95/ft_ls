@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 18:37:10 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/07 18:50:11 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/07 19:10:10 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ void			process_dirs(t_list *args)
 	static int		first = 1;
 
 	ft_lstiter(args, &get_arg_info);
-	ft_lstsort(args, &lexcmp);
+	get_set_flag(0, FLAG_T) ? ft_lstsort(args, &timecmp)
+		: ft_lstsort(args, &lexcmp);
 	ft_lstiter(args, &display_files);
 	ft_printf("%s", first ? "\n" : "\n\n");
 	first = 0;
