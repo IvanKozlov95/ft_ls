@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 18:37:10 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/07 19:42:36 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/07 22:12:57 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,35 @@ t_list			*get_dir_content(t_dir dir)
 	res = NULL;
 	while ((file = readdir(dir.dir)))
 	{
-		new_node = convert_name_to_arg(file->d_name, dir.path, 0);
-		LST_ADDCREATE(res, new_node);
+		if (file->d_name[0] != '.' || get_set_flag(0, FLAG_A))
+		{
+			new_node = convert_name_to_arg(file->d_name, dir.path, 0);
+			LST_ADDCREATE(res, new_node);
+		}
 	}
 	return (res);
 }
 
+char			is_special_dir(char *path)
+{
+	return (ft_strequ(path, CURR_DIR) || ft_strequ(path, PARENT_DIR));
+}
+
 static void		display_dir(t_arg *arg)
 {
+	int			recur;
 	t_dir		dir_info;
 	t_list		*dir_content;
 
 	dir_content = NULL;
 	if (!(dir_info.dir = opendir(arg->path)))
 		ft_printf("ft_ls: %s: Permission denied\n", arg->path);
-	else
+	else if ((is_special_dir(arg->name) && arg->top_level)
+		|| !is_special_dir(arg->name))
 	{
 		ft_printf("%s:\n", arg->path);
 		dir_info.path = arg->path;
+		ft_printf("recurring for %s\n", arg->path);
 		dir_content = get_dir_content(dir_info);
 	}
 	closedir(dir_info.dir);
