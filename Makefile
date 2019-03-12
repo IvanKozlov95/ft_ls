@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+         #
+#    By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/02 16:43:23 by ikozlov           #+#    #+#              #
-#    Updated: 2019/03/11 23:46:43 by ikozlov          ###   ########.fr        #
+#    Updated: 2019/03/12 10:58:05 by ivankozlov       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,9 +34,7 @@ else ifeq ($(ENV), PROD)
 endif
 
 # files
-SRC_FILES = main.c ls.c parse.c arg.c dir.c\
-	file.c utils.c debug_helper.c sort.c flags.c cmp.c\
-	long_format.c
+SRC_FILES = main.c parse.c arg.c dir.c file.c utils.c sort.c flags.c cmp.c long_format.c
 OBJ_FILES = $(SRC_FILES:.c=.o)
 SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
 OBJ = $(addprefix $(OBJ_DIR), $(OBJ_FILES))
