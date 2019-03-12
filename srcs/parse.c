@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:35:22 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/07 16:08:23 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/08 00:21:17 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 #include <stdlib.h>
 
-t_bool		parse_flag(const char *arg, t_ls *ls)
+t_bool		parse_flag(const char *arg)
 {
 	int		i;
 	int		flag_val;
@@ -37,7 +37,7 @@ t_bool		parse_flag(const char *arg, t_ls *ls)
 	return (TRUE);
 }
 
-static int	parse_flags(int ac, const char *av[], t_ls *ls)
+static int	parse_flags(int ac, const char *av[])
 {
 	int			i;
 	const char	*arg;
@@ -46,7 +46,7 @@ static int	parse_flags(int ac, const char *av[], t_ls *ls)
 	while (++i < ac && av[i][0] == '-')
 	{
 		arg = av[i];
-		if (parse_flag(arg, ls) == FALSE)
+		if (parse_flag(arg) == FALSE)
 		{
 			ft_ls_usage();
 			exit(1);
@@ -55,12 +55,13 @@ static int	parse_flags(int ac, const char *av[], t_ls *ls)
 	return (i);
 }
 
-int			parse(int ac, const char *av[], t_ls *ls)
+t_list		*parse(int ac, const char *av[])
 {
 	int		i;
+	t_list	*args;
 
-	i = parse_flags(ac, av, ls);
+	i = parse_flags(ac, av);
 	sort_char_ptr(av + i, ac - i, &ft_strcmp);
-	ls->args = build_arg_list((char **)av + i);
-	return (0);
+	args = build_arg_list((char **)av + i);
+	return (args);
 }
