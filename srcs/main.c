@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 16:34:18 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/07 15:59:44 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/11 23:45:19 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,9 @@ void	ft_ls_usage(void)
 
 int		main(int ac, const char *av[])
 {
-	t_ls	*ls;
+	t_list	*args;
 
-	ls = ls_init();
-	parse(ac - 1, av + 1, ls);
-	process_dirs(ls->args);
+	args = parse(ac - 1, av + 1);
+	process_dirs(args);
 	return (0);
 }

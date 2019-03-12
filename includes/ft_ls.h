@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:31:17 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/07 19:08:34 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/11 23:45:30 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,6 @@
 # include <stdlib.h>
 # include <dirent.h>
 # include <sys/stat.h>
-
-struct					s_ls
-{
-	t_list			*args;
-};
-typedef struct s_ls		t_ls;
 
 struct					s_dir
 {
@@ -63,17 +57,14 @@ typedef struct s_arg	t_arg;
 # define CURR_DIR "."
 # define PARENT_DIR ".."
 
-t_ls					*ls_init(void);
-
-int						parse(int ac, const char *av[], t_ls *ls);
+t_list					*parse(int ac, const char *av[]);
 
 void					ft_ls_usage(void);
-void					print_ls(t_ls *ls);
 
-void					arg_destroy(t_arg *arg);
 void					get_arg_info(t_list *node);
 t_list					*build_arg_list(char *av[]);
 t_arg					*arg_init(const char *name, char *dir);
+void					arg_list_destroy(void *content, size_t size);
 t_list					*convert_name_to_arg(char *name,
 	char *dir, int top_level);
 
