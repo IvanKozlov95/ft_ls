@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 18:37:10 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/07 22:12:57 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/08 00:26:25 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ static void		display_dir(t_arg *arg)
 	{
 		ft_printf("%s:\n", arg->path);
 		dir_info.path = arg->path;
-		ft_printf("recurring for %s\n", arg->path);
 		dir_content = get_dir_content(dir_info);
 	}
 	closedir(dir_info.dir);
@@ -80,5 +79,5 @@ void			process_dirs(t_list *args)
 	ft_printf("%s", first ? "\n" : "\n\n");
 	first = 0;
 	ft_lstiter(args, &display_dirs);
-	ft_lstdel(&args, &ft_free_content);
+	ft_lstdel(&args, &arg_list_destroy);
 }

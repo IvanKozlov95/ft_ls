@@ -6,7 +6,7 @@
 /*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 03:07:17 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/07 15:59:35 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/08 00:07:40 by ikozlov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,17 @@ t_arg	*arg_init(const char *name, char *dir)
 	return (res);
 }
 
-void	arg_destroy(t_arg *arg)
+void	arg_list_destroy(void *content, size_t size)
 {
+	t_arg	*arg;
+
+	(void)size;
+	arg = (t_arg *)content;
 	free(arg->name);
 	free(arg->path);
 	free(arg);
 }
 
-// todo: add/not add hidden
 t_list	*convert_name_to_arg(char *name, char *dir, int top_level)
 {
 	int			i;
