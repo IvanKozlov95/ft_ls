@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 16:34:18 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/11 23:45:19 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/12 11:05:47 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int		main(int ac, const char *av[])
 	t_list	*args;
 
 	args = parse(ac - 1, av + 1);
+	g_arg_count = ft_lstcount(args);
 	process_dirs(args);
 	return (0);
 }

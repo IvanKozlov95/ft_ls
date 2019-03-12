@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dir.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 18:37:10 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/08 00:26:25 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/12 11:14:43 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ static void		display_dir(t_arg *arg)
 	else if ((is_special_dir(arg->name) && arg->top_level)
 		|| !is_special_dir(arg->name))
 	{
-		ft_printf("%s:\n", arg->path);
+		if (g_arg_count > 1 || !arg->top_level)
+			ft_printf("%s:\n", arg->path);
 		dir_info.path = arg->path;
 		dir_content = get_dir_content(dir_info);
 	}
@@ -63,21 +64,21 @@ void			display_dirs(t_list *node)
 
 	arg = (t_arg *)node->content;
 	if (!arg->not_found && S_ISDIR(arg->stat.st_mode)
-		&& (get_set_flag(0, FLAG_RR) || arg->top_level))
-		display_dir(arg);
+		&& (get_set_flag(0, FLAG_RR) || arg->top_level)) {
+			ft_printf("\n");
+			display_dir(arg);
+		}
 }
 
 void			process_dirs(t_list *args)
 {
-	static int		first = 1;
 	static int		(*sort_func)(t_list *, t_list *);
 
 	sort_func = get_set_flag(0, FLAG_T) ? &timecmp : &lexcmp;
 	ft_lstiter(args, &get_arg_info);
 	ft_lstsortascdesc(args, sort_func, !get_set_flag(0, FLAG_R));
 	ft_lstiter(args, &display_files);
-	ft_printf("%s", first ? "\n" : "\n\n");
-	first = 0;
+	ft_printf("\n");
 	ft_lstiter(args, &display_dirs);
 	ft_lstdel(&args, &arg_list_destroy);
 }
