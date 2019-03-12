@@ -6,7 +6,7 @@
 #    By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/02 16:43:23 by ikozlov           #+#    #+#              #
-#    Updated: 2019/03/07 16:43:53 by ikozlov          ###   ########.fr        #
+#    Updated: 2019/03/11 23:46:43 by ikozlov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,11 +52,11 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@$(MAKE) -C $(LIBFT_DIR)
-	$(CPP) $(OBJ) -o $(NAME) $(LIBS)
+	$(CPP) $(CFLAGS) $(OBJ) -o $(NAME) $(LIBS)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(SRC_DIR)*/%.c
 	@mkdir -p $(OBJ_DIR)
-	$(CPP) $(FLAGS) $(INCLUDES) -c $< -o $@
+	$(CPP) $(CFLAGS) $(FLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
 	@make -C $(LIBFT_DIR) clean
