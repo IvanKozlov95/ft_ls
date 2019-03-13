@@ -43,6 +43,7 @@ struct					s_arg
 typedef struct s_arg	t_arg;
 
 int										g_arg_count;
+unsigned long long		g_total;
 
 /*
 ** Flags
@@ -74,7 +75,8 @@ void					display_dirs(t_list *node);
 void					process_dirs(t_list *args);
 t_list					*get_dir_content(t_dir dir);
 
-void					display_files(t_list *node);
+void					display_files(t_list *list);
+int						should_display_file(t_arg *arg);
 char					*build_path(char *dir, char *file_name);
 
 int						lexcmp(t_list *a, t_list *b);

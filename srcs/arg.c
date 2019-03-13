@@ -6,7 +6,7 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 03:07:17 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/13 14:07:01 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/03/13 14:53:43 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void		get_arg_info(t_list *node)
 	if (!lstat(arg->path, &f))
 	{
 		arg->stat = f;
+		g_total += arg->stat.st_blocks;
 	}
 	else
 		arg->not_found = 1;
