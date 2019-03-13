@@ -6,11 +6,14 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 18:41:39 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/13 14:03:26 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/03/13 15:15:56 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+#include "memory.h"
+
+#include <limits.h>
 
 /*
 ** todo: add extra attributes
@@ -21,12 +24,18 @@ void		print_long(t_arg *file)
 	struct stat		st;
 	char			mode;
 	char			perm[10];
+	char			buf[NAME_MAX + 1];
 
 	st = file->stat;
+	ft_bzero(buf, NAME_MAX + 1);
 	mode = get_file_mode(st.st_mode);
 	get_permissions(st.st_mode, perm);
-	ft_printf("%c%s %2u %s %s %6llu %.16s %s\n", mode, perm, st.st_nlink,
-		get_owner(st), get_group(st), st.st_size, get_time(st), file->name);
+	ft_printf("%c%s %2u %s %s %6llu %.16s", mode, perm, st.st_nlink,
+		get_owner(st), get_group(st), st.st_size, get_time(st));
+	if ((readlink(file->path, buf, NAME_MAX)) > 0)
+		ft_printf(" %s -> %s\n", file->name, buf);
+	else
+		ft_printf(" %s\n", file->name);
 }
 
 void		display_file(t_list *node)
