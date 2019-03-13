@@ -6,7 +6,7 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 18:37:10 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/13 14:06:35 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/03/13 14:30:07 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ static void		display_dir(t_arg *arg)
 			ft_printf("%s:\n", arg->path);
 		dir_info.path = arg->path;
 		dir_content = get_dir_content(dir_info);
+		closedir(dir_info.dir);
 	}
-	closedir(dir_info.dir);
 	if (dir_content)
 		process_dirs(dir_content);
 }
