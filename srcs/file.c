@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 18:41:39 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/07 18:50:23 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/13 14:03:26 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 ** todo: add extra attributes
- */
+*/
 
 void		print_long(t_arg *file)
 {

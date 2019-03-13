@@ -6,7 +6,7 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 18:37:10 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/12 11:14:43 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/03/13 14:06:35 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,11 @@ void			display_dirs(t_list *node)
 
 	arg = (t_arg *)node->content;
 	if (!arg->not_found && S_ISDIR(arg->stat.st_mode)
-		&& (get_set_flag(0, FLAG_RR) || arg->top_level)) {
-			ft_printf("\n");
-			display_dir(arg);
-		}
+		&& (get_set_flag(0, FLAG_RR) || arg->top_level))
+	{
+		ft_printf("\n");
+		display_dir(arg);
+	}
 }
 
 void			process_dirs(t_list *args)

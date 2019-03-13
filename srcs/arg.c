@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arg.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 03:07:17 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/08 00:07:40 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/13 14:07:01 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void		get_arg_info(t_list *node)
 	node->content = arg;
 }
 
-t_arg	*arg_init(const char *name, char *dir)
+t_arg		*arg_init(const char *name, char *dir)
 {
 	t_arg	*res;
 
@@ -43,7 +43,7 @@ t_arg	*arg_init(const char *name, char *dir)
 	return (res);
 }
 
-void	arg_list_destroy(void *content, size_t size)
+void		arg_list_destroy(void *content, size_t size)
 {
 	t_arg	*arg;
 
@@ -54,7 +54,7 @@ void	arg_list_destroy(void *content, size_t size)
 	free(arg);
 }
 
-t_list	*convert_name_to_arg(char *name, char *dir, int top_level)
+t_list		*convert_name_to_arg(char *name, char *dir, int top_level)
 {
 	int			i;
 	t_list		*res;
@@ -67,7 +67,7 @@ t_list	*convert_name_to_arg(char *name, char *dir, int top_level)
 	return (res);
 }
 
-t_list	*build_arg_list(char *av[])
+t_list		*build_arg_list(char *av[])
 {
 	int			i;
 	t_list		*res;
