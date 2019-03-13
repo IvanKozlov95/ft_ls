@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikozlov <ikozlov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/02 17:35:22 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/08 00:21:17 by ikozlov          ###   ########.fr       */
+/*   Updated: 2019/03/13 15:40:14 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_bool		parse_flag(const char *arg)
 			return (FALSE);
 		}
 	}
-	return (TRUE);
+	return (i > 1 ? TRUE : FALSE);
 }
 
 static int	parse_flags(int ac, const char *av[])
