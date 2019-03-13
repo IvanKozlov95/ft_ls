@@ -6,7 +6,7 @@
 /*   By: ivankozlov <ivankozlov@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/04 18:41:39 by ikozlov           #+#    #+#             */
-/*   Updated: 2019/03/13 15:15:56 by ivankozlov       ###   ########.fr       */
+/*   Updated: 2019/03/13 15:18:47 by ivankozlov       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,10 @@ int			should_display_file(t_arg *arg)
 		ft_printf("ft_ls: %s: No such file or directory\n", arg->path);
 		return (0);
 	}
-	return ((arg->is_hidden && get_set_flag(0, FLAG_A) && !arg->top_level)
-		|| (!arg->is_hidden && (S_ISREG(arg->stat.st_mode) || !arg->top_level)));
+	if (arg->is_hidden)
+		return (get_set_flag(0, FLAG_A) && !arg->top_level);
+	else
+		return (S_ISREG(arg->stat.st_mode) || !arg->top_level);
 }
 
 void		display_files(t_list *list)
